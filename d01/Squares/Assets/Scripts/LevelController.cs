@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
-        if (AreAllPlayersFinished())
+        if (AreAllPlayersFinished() || Input.GetKeyDown(KeyCode.N))
         {
             NextLevel();
         }
@@ -29,7 +29,7 @@ public class LevelController : MonoBehaviour
     private void NextLevel()
     {
         _curentLevel += 1;
-        if (_curentLevel > _numberOfLevel)
+        if (_curentLevel <= _numberOfLevel)
         {
             SceneManager.LoadScene("Level" + _curentLevel);
         }
@@ -40,7 +40,7 @@ public class LevelController : MonoBehaviour
 
     private bool AreAllPlayersFinished()
     {
-        if (_finishPlayers != null)
+        if (_finishPlayers != null && _finishPlayers.Length > 0)
         {
             foreach (FinishPlayer finishPlayer in _finishPlayers)
             {
