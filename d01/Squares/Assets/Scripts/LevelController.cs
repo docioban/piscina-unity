@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    private static LevelController _instance;
+
     private const int _numberOfLevel = 3;
     [SerializeField] private FinishPlayer[] _finishPlayers;
 
@@ -31,7 +33,8 @@ public class LevelController : MonoBehaviour
         _curentLevel += 1;
         if (_curentLevel <= _numberOfLevel)
         {
-            SceneManager.LoadScene("Level" + _curentLevel);
+            Debug.Log("Level" + _curentLevel);
+            SceneManager.LoadScene("Level" + _curentLevel, LoadSceneMode.Single);
         }
         {
             RestartLevel();
@@ -40,7 +43,7 @@ public class LevelController : MonoBehaviour
 
     private bool AreAllPlayersFinished()
     {
-        if (_finishPlayers != null && _finishPlayers.Length > 0)
+        if (_finishPlayers != null && _finishPlayers.Length > 0 && _finishPlayers[0] != null)
         {
             foreach (FinishPlayer finishPlayer in _finishPlayers)
             {
@@ -55,6 +58,19 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void AssignFinishPlayers()
+    {
+        _finishPlayers = FindObjectsOfType<FinishPlayer>();
     }
 }
