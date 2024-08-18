@@ -34,8 +34,9 @@ public class LevelController : MonoBehaviour
         if (_curentLevel <= _numberOfLevel)
         {
             Debug.Log("Level" + _curentLevel);
-            SceneManager.LoadScene("Level" + _curentLevel, LoadSceneMode.Single);
+            SceneManager.LoadScene("Level" + _curentLevel);
         }
+        else
         {
             RestartLevel();
         }
@@ -67,10 +68,5 @@ public class LevelController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void AssignFinishPlayers()
-    {
-        _finishPlayers = FindObjectsOfType<FinishPlayer>();
     }
 }

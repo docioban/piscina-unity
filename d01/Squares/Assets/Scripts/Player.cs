@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,9 +11,15 @@ public class Player : MonoBehaviour
 
     private float _direction;
     private bool _selectedPlayer;
+    private float _maxBottomPosition = -12f;
 
     private void Update()
     {
+        if (transform.position.y < _maxBottomPosition)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         if (_selectedPlayer)
         {
             GetDirection();
