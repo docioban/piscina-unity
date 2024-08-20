@@ -3,12 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    private static LevelController _instance;
-
     private const int _numberOfLevel = 3;
-    [SerializeField] private FinishPlayer[] _finishPlayers;
 
-    private int _curentLevel = 1;
+    [SerializeField] private FinishPlayer[] _finishPlayers;
+    [SerializeField] private int _level;
 
     private void Update()
     {
@@ -23,18 +21,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void NextLevel()
     {
-        _curentLevel += 1;
-        if (_curentLevel <= _numberOfLevel)
+        _level += 1;
+        if (_level <= _numberOfLevel)
         {
-            Debug.Log("Level" + _curentLevel);
-            SceneManager.LoadScene("Level" + _curentLevel);
+            Debug.Log("Level" + _level);
+            SceneManager.LoadScene("Level" + _level);
         }
         else
         {
@@ -51,22 +49,10 @@ public class LevelController : MonoBehaviour
                 if (finishPlayer.IsFinished == false)
                     return false;
             }
+            Debug.Log("NextLeveL!");
             return true;
         }
         else
             return false;
-    }
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }

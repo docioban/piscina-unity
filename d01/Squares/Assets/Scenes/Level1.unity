@@ -464,6 +464,10 @@ PrefabInstance:
       value: LevelController
       objectReference: {fileID: 0}
     - target: {fileID: 2733329807862646123, guid: 898264db9c27f46cab0c1815ea8823d1, type: 3}
+      propertyPath: _level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733329807862646123, guid: 898264db9c27f46cab0c1815ea8823d1, type: 3}
       propertyPath: _finishPlayers.Array.data[0]
       value: 
       objectReference: {fileID: 5557129586981519622, guid: 07a8963e563e5423c8e13643f3cb8f79, type: 3}
