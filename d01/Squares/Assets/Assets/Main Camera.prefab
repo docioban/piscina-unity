@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5938098020920496795, guid: b8e9bffaf01d5434d825d6d12137516f, type: 3}
+  - {fileID: 7404029981829020694, guid: 19425921704054dc89365952e95a5293, type: 3}
+  - {fileID: 8549891914993851951, guid: 3f73ef43292824d99bd3bffe904ab205, type: 3}

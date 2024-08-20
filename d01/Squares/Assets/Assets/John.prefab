@@ -101,12 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 996296764588910548}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   _groundCheck: {fileID: 2269366269286231093}
   _jumpPower: 10
   _speed: 10
+  _playerColor: 1
 --- !u!50 &996296764588910548
 Rigidbody2D:
   serializedVersion: 4

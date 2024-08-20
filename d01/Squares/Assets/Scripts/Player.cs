@@ -1,13 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum PlayerColor
+{
+    Red,
+    Yellow,
+    Blue
+}
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _speed;
+    [SerializeField] private PlayerColor _playerColor;
 
     private float _direction;
     private bool _selectedPlayer;
@@ -26,6 +33,11 @@ public class Player : MonoBehaviour
             Jump();
             _rb.velocity = new Vector2(_direction * _speed, _rb.velocity.y);
         }
+    }
+
+    public PlayerColor Color()
+    {
+        return _playerColor;
     }
 
     public void Activate()
@@ -48,7 +60,7 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapArea(_groundCheck.position - _groundCheck.lossyScale / 2, _groundCheck.position + _groundCheck.lossyScale / 2, _groundLayer);
+        return Physics2D.OverlapArea(_groundCheck.position - _groundCheck.lossyScale / 2, _groundCheck.position + _groundCheck.lossyScale / 2);
     }
 
     private void GetDirection()

@@ -9,16 +9,13 @@ public class FinishPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (IsFinishedLevel())
-            IsFinished = true;
-        else
-            IsFinished = false;
+        IsFinished = IsFinishedLevel();
     }
 
     private bool IsFinishedLevel()
     {
+        
         float distance = Vector3.Distance(transform.position, playerPosition.position);
-
         return distance <= _threshold;
     }
 }
