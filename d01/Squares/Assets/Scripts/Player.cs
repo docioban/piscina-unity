@@ -35,6 +35,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("BlueMovementPlatform"))
+        {
+            transform.SetParent(collision.transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("BlueMovementPlatform"))
+        {
+            Invoke("UnparentObject", 0.1f);
+        }
+    }
+
+    private void UnparentObject()
+    {
+        transform.SetParent(null);
+    }
+
     public PlayerColor Color()
     {
         return _playerColor;
